@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tutorial EMU8086 | Arquitectura de Computadoras</title>
+
+    <!-- Bootstrap CSS -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+
+        body{
+            background-color: #f4f6f9;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+
+        .navbar{
+            background-color: #0d1b2a;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .navbar-brand{
+            font-weight: bold;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-link{
+            color: white !important;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover{
+            transform: scale(1.05);
+        }
+
+        .dropdown-menu{
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .dropdown-item{
+            padding: 12px 15px;
+            transition: 0.3s;
+        }
+
+        .dropdown-item:hover{
+            background-color: #415a77;
+        }
+
+        /* HERO */
+
+        .hero{
+            background: linear-gradient(to right, #1b263b, #415a77);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero h1{
+            font-size: 3.5rem;
+            font-weight: bold;
+        }
+
+        /* TITULOS */
+
+        .section-title{
+            color: #0d1b2a;
+            font-weight: bold;
+            margin-bottom: 30px;
+            border-left: 6px solid #1b263b;
+            padding-left: 15px;
+        }
+
+        /* CARDS */
+
+        .card{
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover{
+            transform: translateY(-5px);
+        }
+
+        .card-title{
+            font-weight: bold;
+            color: #1b263b;
+        }
+
+        /* IMAGENES */
+
+        .topic-img{
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        /* CODIGO */
+
+        pre{
+            background-color: #0d1b2a;
+            color: #00ff88;
+            padding: 20px;
+            border-radius: 15px;
+            overflow-x: auto;
+        }
+
+        /* BOTONES */
+
+        .btn-custom{
+            background-color: #1b263b;
+            color: white;
+            border-radius: 10px;
+            padding: 12px 25px;
+            transition: 0.3s;
+        }
+
+        .btn-custom:hover{
+            background-color: #415a77;
+            color: white;
+        }
+
+        /* FOOTER */
+
+        footer{
+            background-color: #0d1b2a;
+            color: white;
+            padding: 50px 20px;
+            margin-top: 80px;
+        }
+
+        .footer-logo{
+            background-color: white;
+            padding: 10px;
+            border-radius: 15px;
+        }
+
+        /* PRACTICAS */
+
+        .practice-content{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .practice-code{
+            flex: 1;
+            min-width: 320px;
+        }
+
+        .practice-media{
+            flex: 1;
+            text-align: center;
+        }
+
+        .practice-img{
+            width: 100%;
+            max-width: 589px;
+            height: 233px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:768px){
+
+            .practice-content{
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark py-3">
+
+        <div class="container">
+
+            <!-- LOGO -->
+
+            <a class="navbar-brand" href="../index.html">
+                Arquitectura de Máquinas
+            </a>
+
+            <!-- BOTON RESPONSIVE -->
+
+            <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <!-- MENU -->
+
+            <div class="collapse navbar-collapse" id="menu">
+
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                    <!-- INICIO -->
+
+                    <li class="nav-item me-3">
+
+                        <a class="nav-link fw-bold"
+                            href="../index.html">
+
+                            <i class="bi bi-house-fill"></i>
+                            Inicio
+
+                        </a>
+
+                    </li>
+
+                    <!-- DROPDOWN UNIDADES -->
+
+                    <li class="nav-item dropdown me-3">
+
+                        <a class="nav-link dropdown-toggle fw-bold"
+                            href="#"
+                            role="button"
+                            data-bs-toggle="dropdown">
+
+                            <i class="bi bi-book-fill"></i>
+                            Unidades
+
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-dark">
+
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="../unidades/unidad1.html">
+
+                                    <img src="../img/unidad1.jpg"
+                                        width="35"
+                                        class="me-2 rounded">
+
+                                    Unidad 1
+
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="../unidades/unidad2.html">
+
+                                    <img src="../img/unidad2.jpg"
+                                        width="35"
+                                        class="me-2 rounded">
+
+                                    Unidad 2
+
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="../unidades/unidad3.html">
+
+                                    <img src="../img/unidad3.jpg"
+                                        width="35"
+                                        class="me-2 rounded">
+
+                                    Unidad 3
+
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="../unidades/unidad4.html">
+
+                                    <img src="../img/unidad4.jpg"
+                                        width="35"
+                                        class="me-2 rounded">
+
+                                    Unidad 4
+
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="../unidades/unidad5.html">
+
+                                    <img src="../img/unidad5.jpg"
+                                        width="35"
+                                        class="me-2 rounded">
+
+                                    Unidad 5
+
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                    <!-- DROPDOWN TUTORIALES -->
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle fw-bold"
+                            href="#"
+                            role="button"
+                            data-bs-toggle="dropdown">
+
+                            <i class="bi bi-tools"></i>
+                            Tutoriales
+
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-dark">
+
+                            <li>
+
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="arduino.html">
+
+                                    <img src="../img/arduino.png"
+                                        width="35"
+                                        class="me-2">
+
+                                    Arduino
+
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="emu8086.html">
+
+                                    <img src="../img/emu8086.png"
+                                        width="35"
+                                        class="me-2">
+
+                                    EMU8086
+
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="container">
+
+            <h1>
+                Tutorial de EMU8086
+            </h1>
+
+            <p class="mt-4">
+                Aprende programación en lenguaje ensamblador utilizando el emulador EMU8086.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- INTRODUCCION -->
+
+    <section class="container mb-5">
+
+        <h2 class="section-title">
+            1. Introducción a EMU8086
+        </h2>
+
+        <div class="card p-4">
+
+            <img src="../img/emu8086-banner.png"
+                alt="EMU8086"
+                class="topic-img mb-4">
+
+            <p>
+                EMU8086 es un emulador del microprocesador Intel 8086 que permite
+                desarrollar y ejecutar programas en lenguaje ensamblador.
+            </p>
+
+            <p>
+                Es utilizado con fines educativos para comprender el funcionamiento
+                interno de los procesadores y el manejo de registros, memoria
+                e interrupciones.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- CONCEPTOS -->
+
+    <section class="container mb-5">
+
+        <h2 class="section-title">
+            2. Conceptos Básicos
+        </h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="card h-100 p-4">
+
+                    <h4 class="card-title">
+                        Registros
+                    </h4>
+
+                    <p>
+                        Son pequeñas memorias internas utilizadas para almacenar datos temporalmente.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card h-100 p-4">
+
+                    <h4 class="card-title">
+                        Interrupciones
+                    </h4>
+
+                    <p>
+                        Permiten interactuar con el sistema operativo para entrada y salida de datos.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card h-100 p-4">
+
+                    <h4 class="card-title">
+                        Lenguaje Ensamblador
+                    </h4>
+
+                    <p>
+                        Lenguaje de bajo nivel que trabaja directamente con instrucciones del procesador.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ESTRUCTURA -->
+
+     <section class="container mb-5">
+
+        <h2 class="section-title">
+            3. Estructura Básica de un Programa en EMU8086 (Hola Mundo)
+        </h2>
+
+    <div class="card p-4">
+
+    <div class="practice-content">
+
+        <!-- CODIGO -->
+
+        <div class="practice-code">
+
+<pre>
+.model small
+.stack 100h
+.data
+
+mensaje db 'Hola Mundo$'
+
+.code
+main proc
+
+    mov ax, @data
+    mov ds, ax
+
+    mov ah, 09h
+    lea dx, mensaje
+    int 21h
+
+    mov ah, 4Ch
+    int 21h
+
+main endp
+end main
+</pre>
+
+        </div>
+
+        <!-- IMAGEN -->
+
+        <div class="practice-media">
+
+            <img src="../img/hola-mundo.png"
+                alt="Hola Mundo EMU8086"
+                class="practice-img">
+
+        </div>
+
+    </div>
+
+</div>
+
+    <!-- EJERCICIO 1 -->
+
+    <div class="card p-4 mb-4">
+
+        <h3 class="card-title">
+            Ejercicio 1
+        </h3>
+
+        <p>
+            Suma de dos números.
+        </p>
+
+        <div class="practice-content">
+
+            <div class="practice-code">
+
+<pre>
+.model small
+.stack 100h
+.data
+
+msg1 db 'Ingrese el primer número: $'
+msg2 db 13,10, 'Ingrese el segundo número: $'
+resultado db 13,10, 'La suma es: $'
+
+.code
+main proc
+
+
+    mov ax, @data
+    mov ds, ax
+
+    mov ah, 09h
+    lea dx, msg1
+    int 21h
+
+    mov ah, 01h
+    int 21h
+    sub al, 30h ; Convertir de ASCII a número
+    mov bl, al ; Guardar primer número en BL
+
+    mov ah, 09h
+    lea dx, msg2
+    int 21h
+
+    mov ah, 01h
+    int 21h
+    sub al, 30h ; Convertir de ASCII a número
+    mov bh, al ; Guardar segundo número en BH
+
+    add bl, bh ; Sumar los dos números
+
+    mov ah, 09h
+    lea dx, resultado
+    int 21h
+
+    add bl, 30h ; Convertir resultado a ASCII
+
+    mov dl, bl
+    mov ah, 02h
+    int 21h
+
+    mov ah, 4Ch
+    int 21h
+
+main endp
+end main
+</pre>
+
+            </div>
+
+            <div class="practice-media">
+
+                <img src="../img/ejercicio1.png"
+                    alt="Ejercicio 1"
+                    class="practice-img">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- EJERCICIO 2 -->
+
+    <div class="card p-4 mb-4">
+
+        <h3 class="card-title">
+            Ejercicio 2
+        </h3>
+
+        <p>
+            Contar el número de dígitos de un número.
+        </p>
+
+        <div class="practice-content">
+
+            <div class="practice-code">
+
+<pre>
+MOV AX, 20
+MOV BX, 8
+SUB AX, BX
+</pre>
+
+            </div>
+
+            <div class="practice-media">
+
+                <img src="../img/ejercicio2.png"
+                    alt="Ejercicio 2"
+                    class="practice-img">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- EJERCICIO 3 -->
+
+    <div class="card p-4 mb-4">
+
+        <h3 class="card-title">
+            Ejercicio 3
+        </h3>
+
+        <p>
+            Invertir un número.
+        </p>
+
+        <div class="practice-content">
+
+            <div class="practice-code">
+
+<pre>
+MOV AX, 4
+MOV BX, 3
+MUL BX
+</pre>
+
+            </div>
+
+            <div class="practice-media">
+
+                <img src="../img/ejercicio3.png"
+                    alt="Ejercicio 3"
+                    class="practice-img">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- EJERCICIO 4 -->
+
+    <div class="card p-4 mb-4">
+
+        <h3 class="card-title">
+            Ejercicio 4
+        </h3>
+
+        <p>
+            Suma de un arreglo de números.
+        </p>
+
+        <div class="practice-content">
+
+            <div class="practice-code">
+
+<pre>
+MOV AX, 20
+MOV BL, 5
+DIV BL
+</pre>
+
+            </div>
+
+            <div class="practice-media">
+
+                <img src="../img/ejercicio4.png"
+                    alt="Ejercicio 4"
+                    class="practice-img">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- EJERCICIO 5 -->
+
+    <div class="card p-4 mb-4">
+
+        <h3 class="card-title">
+            Ejercicio 5
+        </h3>
+
+        <p>
+            Multiplicación de dos números.
+        </p>
+
+        <div class="practice-content">
+
+            <div class="practice-code">
+
+<pre>
+MOV AX, 5
+CMP AX, 5
+JE IGUAL
+</pre>
+
+            </div>
+
+            <div class="practice-media">
+
+                <img src="../img/ejercicio5.png"
+                    alt="Ejercicio 5"
+                    class="practice-img">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- BOTONES -->
+
+    <section class="text-center my-5">
+
+        <!-- BOTON REGRESAR -->
+
+        <a href="../tutoriales/arduino.html"
+            class="btn btn-custom btn-lg me-3">
+
+            <i class="bi bi-arrow-left-circle-fill me-2"></i>
+            Regresar al tutorial anterior
+
+        </a>
+
+        <!-- BOTON INICIO -->
+
+        <a href="../index.html"
+            class="btn btn-custom btn-lg me-3">
+
+            <i class="bi bi-house-fill me-2"></i>
+            Volver al Inicio
+
+        </a>
+
+    </section>
+
+        <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="row align-items-center justify-content-center">
+
+                <div class="col-md-3 text-center mb-4">
+
+                    <img src="../img/uni.png"
+                        alt="Logo UNI"
+                        width="180"
+                        class="img-fluid footer-logo">
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <h4>
+                        Universidad Nacional de Ingeniería
+                    </h4>
+
+                    <h5 class="mt-3">
+                        Integrantes:
+                    </h5>
+
+                    <p>
+                        Andrea María Aragón Solis <br>
+                        Luis Ariel Godoy Montoya <br>
+                        Kenneth Andrés Solis Román
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Unidad 1 | Arquitectura de Máquinas</title>
+
+    <!-- Bootstrap CSS -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- ESTILOS -->
+
+    <style>
+
+        body{
+            background-color: #f4f6f9;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+
+        .navbar{
+            background-color: #0d1b2a;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .navbar-brand{
+            font-weight: bold;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-link{
+            color: white !important;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover{
+            transform: scale(1.05);
+        }
+
+        .dropdown-menu{
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .dropdown-item{
+            padding: 12px 15px;
+            transition: 0.3s;
+        }
+
+        .dropdown-item:hover{
+            background-color: #415a77;
+        }
+
+        /* HERO */
+
+        .hero{
+            background: linear-gradient(to right, #1b263b, #415a77);
+            color: white;
+            padding: 90px 20px;
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .hero h1{
+            font-size: 3.5rem;
+            font-weight: bold;
+        }
+
+        .hero h3{
+            margin-top: 15px;
+            font-weight: 300;
+        }
+
+        /* TITULOS */
+
+        .section-title{
+            color: #0d1b2a;
+            font-weight: bold;
+            margin-bottom: 30px;
+            border-left: 6px solid #1b263b;
+            padding-left: 15px;
+        }
+
+        /* CARDS */
+
+        .card{
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover{
+            transform: translateY(-5px);
+        }
+
+        .card-title{
+            font-weight: bold;
+            color: #1b263b;
+        }
+
+        /* IMAGENES */
+
+        .topic-img{
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        /* LISTAS */
+
+        ul li{
+            margin-bottom: 10px;
+        }
+
+        /* TABLA */
+
+        .table{
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        /* BOTONES */
+
+        .btn-custom{
+            background-color: #1b263b;
+            color: white;
+            border-radius: 10px;
+            padding: 12px 25px;
+            transition: 0.3s;
+        }
+
+        .btn-custom:hover{
+            background-color: #415a77;
+            color: white;
+        }
+
+        /* FOOTER */
+
+        footer{
+            background-color: #0d1b2a;
+            color: white;
+            padding: 50px 20px;
+            margin-top: 80px;
+        }
+
+        .footer-logo{
+            background-color: white;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark py-3">
+
+        <div class="container">
+
+            <!-- LOGO -->
+
+            <a class="navbar-brand" href="../index.html">
+                Arquitectura de Máquinas
+            </a>
+
+            <!-- BOTON RESPONSIVE -->
+
+            <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <!-- MENU -->
+
+            <div class="collapse navbar-collapse" id="menu">
+
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                    <!-- INICIO -->
+
+                    <li class="nav-item me-3">
+
+                        <a class="nav-link fw-bold"
+                            href="../index.html">
+
+                            <i class="bi bi-house-fill"></i>
+                            Inicio
+
+                        </a>
+
+                    </li>
+
+                    <!-- DROPDOWN UNIDADES -->
+
+                    <li class="nav-item dropdown me-3">
+
+                        <a class="nav-link dropdown-toggle fw-bold"
+                            href="#"
+                            role="button"
+                            data-bs-toggle="dropdown">
+
+                            <i class="bi bi-book-fill"></i>
+                            Unidades
+
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-dark">
+
+                            <li>
+
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="unidad1.html">
+
+                                    <img src="../img/unidad1.jpg"
+                                        width="35"
+                                        class="me-2 rounded">
+
+                                    Unidad 1
+
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="unidad2.html">
+
+                                    <img src="../img/unidad2.jpg"
+                                        width="35"
+                                        class="me-2 rounded">
+
+                                    Unidad 2
+
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="unidad3.html">
+
+                                    <img src="../img/unidad3.jpg"
+                                        width="35"
+                                        class="me-2 rounded">
+
+                                    Unidad 3
+
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="unidad4.html">
+
+                                    <img src="../img/unidad4.jpg"
+                                        width="35"
+                                        class="me-2 rounded">
+
+                                    Unidad 4
+
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="unidad5.html">
+
+                                    <img src="../img/unidad5.jpg"
+                                        width="35"
+                                        class="me-2 rounded">
+
+                                    Unidad 5
+
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                    <!-- DROPDOWN TUTORIALES -->
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle fw-bold"
+                            href="#"
+                            role="button"
+                            data-bs-toggle="dropdown">
+
+                            <i class="bi bi-tools"></i>
+                            Tutoriales
+
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-dark">
+
+                            <li>
+
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="../tutoriales/arduino.html">
+
+                                    <img src="../img/arduino.png"
+                                        width="35"
+                                        class="me-2">
+
+                                    Arduino
+
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="../tutoriales/emu8086.html">
+
+                                    <img src="../img/emu8086.png"
+                                        width="35"
+                                        class="me-2">
+
+                                    EMU8086
+
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="container">
+
+            <h1>
+                Unidad I
+            </h1>
+
+            <h3>
+                Introducción a los Microprocesadores y Microcontroladores
+            </h3>
+
+        </div>
+
+    </section>
+
+    <!-- CONTENIDO -->
+
+    <div class="container">
+
+        <!-- INTRODUCCIÓN -->
+
+        <section class="mb-5">
+
+            <h2 class="section-title">
+                Introducción
+            </h2>
+
+            <div class="card p-4">
+
+                <p>
+                    La arquitectura y organización de computadoras estudia
+                    el diseño interno de los sistemas computacionales,
+                    permitiendo comprender la interacción entre hardware
+                    y software para ejecutar instrucciones y procesar datos.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- CONCEPTOS -->
+
+        <section class="mb-5">
+
+            <h2 class="section-title">
+                1.1 Conceptos de Arquitectura y Organización
+            </h2>
+
+            <div class="row g-4">
+
+                <!-- ARQUITECTURA -->
+
+                <div class="col-lg-6">
+
+                    <div class="card h-100 p-4">
+
+                        <img src="../img/microprocessor.jpg"
+                            class="topic-img mb-4"
+                            alt="Arquitectura">
+
+                        <h3 class="card-title">
+                            1.1.1 Arquitectura
+                        </h3>
+
+                        <p>
+                            La arquitectura de computadoras describe las
+                            características visibles para el programador
+                            y usuario.
+                        </p>
+
+                        <ul>
+
+                            <li>Conjunto de instrucciones</li>
+                            <li>Formato de datos</li>
+                            <li>Registros</li>
+                            <li>Manejo de memoria</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <!-- ORGANIZACIÓN -->
+
+                <div class="col-lg-6">
+
+                    <div class="card h-100 p-4">
+
+                        <img src="../img/microcontroller.jpeg"
+                            class="topic-img mb-4"
+                            alt="Organización">
+
+                        <h3 class="card-title">
+                            1.1.1.2 Organización
+                        </h3>
+
+                        <p>
+                            La organización se refiere a cómo se implementan
+                            físicamente los componentes del sistema.
+                        </p>
+
+                        <ul>
+
+                            <li>CPU</li>
+                            <li>Memoria</li>
+                            <li>Buses</li>
+                            <li>Dispositivos de Entrada/Salida</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ESTRUCTURA Y FUNCION -->
+
+        <section class="mb-5">
+
+            <div class="row g-4">
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 p-4">
+
+                        <h3 class="card-title">
+                            1.1.1.2.1 Estructura
+                        </h3>
+
+                        <p>
+                            La estructura representa la forma en que los
+                            componentes internos están organizados.
+                        </p>
+
+                        <ul>
+
+                            <li>CPU</li>
+                            <li>Memoria principal</li>
+                            <li>Periféricos</li>
+                            <li>Buses</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 p-4">
+
+                        <h3 class="card-title">
+                            1.1.1.2.2 Función
+                        </h3>
+
+                        <p>
+                            Las funciones principales de una computadora son:
+                        </p>
+
+                        <ul>
+
+                            <li>Procesamiento de datos</li>
+                            <li>Almacenamiento</li>
+                            <li>Transferencia de información</li>
+                            <li>Control de operaciones</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ESTRUCTURA COMPUTADORA -->
+
+        <section class="mb-5">
+
+            <h2 class="section-title">
+                1.1.2 Estructura de la Computadora
+            </h2>
+
+            <div class="row g-4">
+
+                <div class="col-lg-4">
+
+                    <div class="card h-100 p-4">
+
+                        <h4 class="card-title">
+                            Procesamiento
+                        </h4>
+
+                        <p>
+                            El procesamiento se realiza en la CPU.
+                        </p>
+
+                        <ul>
+
+                            <li>ALU</li>
+                            <li>Unidad de Control</li>
+                            <li>Registros</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <div class="card h-100 p-4">
+
+                        <h4 class="card-title">
+                            Sistema de Memoria
+                        </h4>
+
+                        <p>
+                            Almacena datos e instrucciones necesarias.
+                        </p>
+
+                        <ul>
+
+                            <li>RAM</li>
+                            <li>ROM</li>
+                            <li>Caché</li>
+                            <li>Disco Duro</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <div class="card h-100 p-4">
+
+                        <h4 class="card-title">
+                            Entrada - Salida
+                        </h4>
+
+                        <p>
+                            Permite la comunicación entre usuario y computadora.
+                        </p>
+
+                        <ul>
+
+                            <li>Teclado</li>
+                            <li>Mouse</li>
+                            <li>Monitor</li>
+                            <li>Impresora</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- MICROPROCESADOR Y MICROCONTROLADOR -->
+
+        <section class="mb-5">
+
+            <h2 class="section-title">
+                1.2 Diferencia entre Microprocesador y Microcontrolador
+            </h2>
+
+            <div class="row g-4">
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 p-4">
+
+                        <h3 class="card-title">
+                            Microprocesador
+                        </h3>
+
+                        <p>
+                            Circuito integrado encargado de ejecutar operaciones.
+                        </p>
+
+                        <p>
+                            Ejemplos: Intel Core i7 y AMD Ryzen.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 p-4">
+
+                        <h3 class="card-title">
+                            Microcontrolador
+                        </h3>
+
+                        <p>
+                            Circuito integrado con CPU, memoria y puertos E/S.
+                        </p>
+
+                        <p>
+                            Ejemplos: Arduino, PIC y ESP32.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- TABLA -->
+
+        <section class="mb-5">
+
+            <h2 class="section-title">
+                Comparación
+            </h2>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-hover text-center align-middle">
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th>Microprocesador</th>
+                            <th>Microcontrolador</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>Necesita memoria externa</td>
+                            <td>Integra memoria</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Mayor potencia</td>
+                            <td>Menor consumo energético</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Usado en computadoras</td>
+                            <td>Usado en sistemas embebidos</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Mayor costo</td>
+                            <td>Más económico</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- BOTONES -->
+
+        <section class="text-center my-5">
+
+            <!-- BOTON INICIO -->
+
+            <a href="../index.html"
+                class="btn btn-custom btn-lg me-3">
+
+                <i class="bi bi-house-fill me-2"></i>
+                Volver al Inicio
+
+            </a>
+
+            <!-- BOTON SIGUIENTE -->
+
+            <a href="unidad2.html"
+                class="btn btn-custom btn-lg">
+
+                Ver Siguiente Unidad
+                <i class="bi bi-arrow-right-circle-fill ms-2"></i>
+
+            </a>
+
+        </section>
+
+    </div>    
+    
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="row align-items-center justify-content-center">
+
+                <!-- LOGO -->
+
+                <div class="col-md-3 text-center mb-4 mb-md-0">
+
+                    <img src="../img/uni.png"
+                        alt="Logo UNI"
+                        width="180"
+                        class="img-fluid footer-logo">
+
+                </div>
+
+                <!-- TEXTO -->
+
+                <div class="col-md-6 text-md-start text-center">
+
+                    <h4 class="mb-3">
+                        Universidad Nacional de Ingeniería
+                    </h4>
+
+                    <h5 class="mb-3">
+                        Integrantes:
+                    </h5>
+
+                    <p class="mb-0">
+                        Andrea María Aragón Solis <br>
+                        Luis Ariel Godoy Montoya <br>
+                        Kenneth Andrés Solis Román
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

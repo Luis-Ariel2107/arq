@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Unidad 3 | Arquitectura de Máquinas</title>
+
+    <!-- Bootstrap CSS -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+
+        body{
+            background-color: #f4f6f9;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+
+        .navbar{
+            background-color: #0d1b2a;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .navbar-brand{
+            font-weight: bold;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-link{
+            color: white !important;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover{
+            transform: scale(1.05);
+        }
+
+        .dropdown-menu{
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .dropdown-item{
+            padding: 12px 15px;
+            transition: 0.3s;
+        }
+
+        .dropdown-item:hover{
+            background-color: #415a77;
+        }
+
+        /* HERO */
+
+        .hero{
+            background: linear-gradient(to right, #1b263b, #415a77);
+            color: white;
+            padding: 90px 20px;
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .hero h1{
+            font-size: 3.5rem;
+            font-weight: bold;
+        }
+
+        .hero h3{
+            margin-top: 15px;
+            font-weight: 300;
+        }
+
+        /* TITULOS */
+
+        .section-title{
+            color: #0d1b2a;
+            font-weight: bold;
+            margin-bottom: 30px;
+            border-left: 6px solid #1b263b;
+            padding-left: 15px;
+        }
+
+        /* CARDS */
+
+        .card{
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover{
+            transform: translateY(-5px);
+        }
+
+        .card-title{
+            font-weight: bold;
+            color: #1b263b;
+        }
+
+        /* IMAGENES */
+
+        .topic-img{
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        /* LISTAS */
+
+        ul li{
+            margin-bottom: 10px;
+        }
+
+        /* BOTONES */
+
+        .btn-custom{
+            background-color: #1b263b;
+            color: white;
+            border-radius: 10px;
+            padding: 12px 25px;
+            transition: 0.3s;
+        }
+
+        .btn-custom:hover{
+            background-color: #415a77;
+            color: white;
+        }
+
+        /* FOOTER */
+
+        footer{
+            background-color: #0d1b2a;
+            color: white;
+            padding: 50px 20px;
+            margin-top: 80px;
+        }
+
+        .footer-logo{
+            background-color: white;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark py-3">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                Arquitectura de Máquinas
+            </a>
+
+            <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                    <!-- INICIO -->
+
+                    <li class="nav-item me-3">
+
+                        <a class="nav-link fw-bold"
+                            href="../index.html">
+
+                            <i class="bi bi-house-fill"></i>
+                            Inicio
+
+                        </a>
+
+                    </li>
+
+                    <!-- DROPDOWN UNIDADES -->
+
+                    <li class="nav-item dropdown me-3">
+
+                        <a class="nav-link dropdown-toggle fw-bold"
+                            href="#"
+                            role="button"
+                            data-bs-toggle="dropdown">
+
+                            <i class="bi bi-book-fill"></i>
+                            Unidades
+
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-dark">
+
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="unidad1.html">
+
+                                    <img src="../img/unidad1.jpg"
+                                        width="35"
+                                        class="me-2 rounded">
+
+                                    Unidad 1
+
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="unidad2.html">
+
+                                    <img src="../img/unidad2.jpg"
+                                        width="35"
+                                        class="me-2 rounded">
+
+                                    Unidad 2
+
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="unidad3.html">
+
+                                    <img src="../img/unidad3.jpg"
+                                        width="35"
+                                        class="me-2 rounded">
+
+                                    Unidad 3
+
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="unidad4.html">
+
+                                    <img src="../img/unidad4.jpg"
+                                        width="35"
+                                        class="me-2 rounded">
+
+                                    Unidad 4
+
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="unidad5.html">
+
+                                    <img src="../img/unidad5.jpg"
+                                        width="35"
+                                        class="me-2 rounded">
+
+                                    Unidad 5
+
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                    <!-- DROPDOWN TUTORIALES -->
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle fw-bold"
+                            href="#"
+                            role="button"
+                            data-bs-toggle="dropdown">
+
+                            <i class="bi bi-tools"></i>
+                            Tutoriales
+
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-dark">
+
+                            <li>
+
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="../tutoriales/arduino.html">
+
+                                    <img src="../img/arduino.png"
+                                        width="35"
+                                        class="me-2">
+
+                                    Arduino
+
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a class="dropdown-item d-flex align-items-center"
+                                    href="../tutoriales/emu8086.html">
+
+                                    <img src="../img/emu8086.png"
+                                        width="35"
+                                        class="me-2">
+
+                                    EMU8086
+
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="container">
+
+            <h1>
+                Unidad III
+            </h1>
+
+            <h3>
+                Programación del Microprocesador
+            </h3>
+
+        </div>
+
+    </section>
+
+    <!-- CONTENIDO -->
+
+    <div class="container">
+
+        <!-- INTRODUCCIÓN -->
+
+        <section class="mb-5">
+
+            <h2 class="section-title">
+                Introducción
+            </h2>
+
+            <div class="card p-4">
+
+                <p>
+                    La programación del microprocesador permite controlar
+                    el funcionamiento interno de la computadora mediante
+                    instrucciones escritas en lenguaje ensamblador.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- ARQUITECTURA IX86 -->
+
+        <section class="mb-5">
+
+            <h2 class="section-title">
+                3.1 Arquitectura de la Familia ix86
+            </h2>
+
+            <div class="row g-4">
+
+                <div class="col-lg-4">
+
+                    <div class="card h-100 p-4">
+
+                        <img src="../img/diagramabloquesx86.jpg"
+                            class="topic-img mb-4"
+                            alt="Diagrama de bloques">
+
+                        <h3 class="card-title">
+                            3.1.1 Diagrama de Bloques
+                        </h3>
+
+                        <p>
+                            Representa gráficamente la estructura interna
+                            del microprocesador.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <div class="card h-100 p-4">
+
+                        <img src="../img/memoria.jpg"
+                            class="topic-img mb-4"
+                            alt="Modelos de memoria">
+
+                        <h3 class="card-title">
+                            3.1.2 Modelos de Memoria
+                        </h3>
+
+                        <p>
+                            Definen la organización y acceso a la memoria
+                            dentro del sistema.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <div class="card h-100 p-4">
+
+                        <img src="../img/registers.jpg"
+                            class="topic-img mb-4"
+                            alt="Registros">
+
+                        <h3 class="card-title">
+                            3.1.3 Registros
+                        </h3>
+
+                        <p>
+                            Son memorias internas de alta velocidad utilizadas
+                            por el procesador.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ENSAMBLADOR -->
+
+        <section class="mb-5">
+
+            <h2 class="section-title">
+                3.2 Ensamblador de la Familia ix86
+            </h2>
+
+            <div class="row g-4">
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 p-4">
+
+                        <h3 class="card-title">
+                            Declaración de Segmentos
+                        </h3>
+
+                        <p>
+                            Permite organizar código, datos y pila en memoria.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 p-4">
+
+                        <h3 class="card-title">
+                            Modos de Direccionamiento
+                        </h3>
+
+                        <p>
+                            Definen cómo acceder a los datos e instrucciones.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 p-4">
+
+                        <h3 class="card-title">
+                            Estructuras de Control de Flujo
+                        </h3>
+
+                        <p>
+                            Permiten crear decisiones, ciclos y saltos.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 p-4">
+
+                        <h3 class="card-title">
+                            Formato de Sentencias
+                        </h3>
+
+                        <p>
+                            Las instrucciones siguen una sintaxis específica
+                            en lenguaje ensamblador.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- TEMAS COMPLEMENTARIOS -->
+
+        <section class="mb-5">
+
+            <h2 class="section-title">
+                Temas Complementarios
+            </h2>
+
+            <div class="row g-4">
+
+                <!-- PALABRAS RESERVADAS -->
+
+                <div class="col-md-4">
+
+                    <div class="card h-100 p-4">
+
+                        <h4 class="card-title">
+                            Palabras Reservadas
+                        </h4>
+
+                        <p>
+                            Son términos especiales utilizados por el ensamblador.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- CONSTANTES -->
+
+                <div class="col-md-4">
+
+                    <div class="card h-100 p-4">
+
+                        <h4 class="card-title">
+                            Constantes
+                        </h4>
+
+                        <p>
+                            Valores fijos utilizados dentro del programa.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- OPERADORES -->
+
+                <div class="col-md-4">
+
+                    <div class="card h-100 p-4">
+
+                        <h4 class="card-title">
+                            Operadores
+                        </h4>
+
+                        <p>
+                            Permiten realizar operaciones aritméticas y lógicas.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- TIPOS DE DATOS -->
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 p-4">
+
+                        <h4 class="card-title">
+                            Tipos de Datos
+                        </h4>
+
+                        <p>
+                            Definen el tamaño y representación de la información.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- CONJUNTO DE INSTRUCCIONES -->
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 p-4">
+
+                        <h4 class="card-title">
+                            Conjunto de Instrucciones
+                        </h4>
+
+                        <p>
+                            Grupo de instrucciones ejecutadas por el procesador.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- ENTRADA SALIDA -->
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 p-4">
+
+                        <h4 class="card-title">
+                            Control de Entrada / Salida
+                        </h4>
+
+                        <p>
+                            Gestiona la comunicación entre dispositivos externos
+                            y el microprocesador.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- INTERRUPCIONES -->
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 p-4">
+
+                        <h4 class="card-title">
+                            Interrupciones
+                        </h4>
+
+                        <p>
+                            Mecanismo utilizado para atender eventos externos
+                            e internos del sistema.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- MACROS -->
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 p-4">
+
+                        <h4 class="card-title">
+                            Uso de Macros
+                        </h4>
+
+                        <p>
+                            Facilitan la reutilización de bloques de código
+                            repetitivos en ensamblador.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- PROCEDIMIENTOS -->
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 p-4">
+
+                        <h4 class="card-title">
+                            Uso de Procedimientos
+                        </h4>
+
+                        <p>
+                            Permiten dividir programas en módulos reutilizables
+                            y organizados.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- BOTONES -->
+
+        <section class="text-center my-5">
+
+            <!-- BOTON ANTERIOR -->
+
+            <a href="unidad2.html"
+                class="btn btn-custom btn-lg me-3">
+
+                <i class="bi bi-arrow-left-circle-fill me-2"></i>
+                Unidad Anterior
+
+            </a>
+
+            <!-- BOTON SIGUIENTE -->
+
+            <a href="unidad4.html"
+                class="btn btn-custom btn-lg">
+
+                Ver Siguiente Unidad
+                <i class="bi bi-arrow-right-circle-fill ms-2"></i>
+
+            </a>
+
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="row align-items-center justify-content-center">
+
+                <div class="col-md-3 text-center mb-4 mb-md-0">
+
+                    <img src="../img/uni.png"
+                        alt="Logo UNI"
+                        width="180"
+                        class="img-fluid footer-logo">
+
+                </div>
+
+                <div class="col-md-6 text-md-start text-center">
+
+                    <h4 class="mb-3">
+                        Universidad Nacional de Ingeniería
+                    </h4>
+
+                    <h5 class="mb-3">
+                        Integrantes:
+                    </h5>
+
+                    <p class="mb-0">
+                        Andrea María Aragón Solis <br>
+                        Luis Ariel Godoy Montoya <br>
+                        Kenneth Andrés Solis Román
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
