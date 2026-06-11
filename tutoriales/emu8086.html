@@ -500,7 +500,7 @@
             3. Estructura Básica de un Programa en EMU8086 (Hola Mundo)
         </h2>
 
-    <div class="card p-4">
+    <div class="card p-4 mb-4">
 
     <div class="practice-content">
 
@@ -547,6 +547,17 @@ end main
     </div>
 
 </div>
+
+</section>
+
+
+    <!-- EJERCICIOS PRÁCTICOS -->
+
+    <section class="container mb-5">
+
+        <h2 class="section-title">
+            4. Ejercicios Prácticos
+        </h2>
 
     <!-- EJERCICIO 1 -->
 
@@ -648,9 +659,48 @@ end main
             <div class="practice-code">
 
 <pre>
-MOV AX, 20
-MOV BX, 8
-SUB AX, BX
+.model small
+.stack 100h
+.data
+
+msg1 db 'Ingrese un número: $'
+res db 13,10, 'Cantidad de dígitos: $'
+
+.code
+main proc  
+
+    mov ax, @data
+    mov ds, ax
+
+    mov ah, 09h
+    lea dx, msg
+    int 21h
+
+    mov cx, 0 ; Inicializar contador de dígitos
+
+    mov ah, 01h
+    int 21h
+    cmp al, 13 ; Verificar si se presionó Enter
+    je mostrar_resultado
+
+    inc cx ; Incrementar contador de dígitos
+    jmp leer_digito
+
+    mov ah, 09h
+    lea dx, res
+    int 21h
+
+    add cx, 30h ; Convertir contador a ASCII
+
+    mov dl, cl
+    mov ah, 02h
+    int 21h
+
+    mov ah, 4Ch
+    int 21h
+
+main endp
+end main
 </pre>
 
             </div>
@@ -676,7 +726,7 @@ SUB AX, BX
         </h3>
 
         <p>
-            Invertir un número.
+            Invertir un número de 16 bits (4 dígitos).
         </p>
 
         <div class="practice-content">
@@ -684,9 +734,47 @@ SUB AX, BX
             <div class="practice-code">
 
 <pre>
-MOV AX, 4
-MOV BX, 3
-MUL BX
+.model small
+.stack 100h
+.data
+
+msg1 db 'Ingrese un número de 4 dígitos: $'
+res db 13,10, 'Número invertido: $'
+
+.code
+main proc  
+
+    mov ax, @data
+    mov ds, ax
+
+    mov ah, 09h
+    lea dx, msg
+    int 21h
+
+    mov cx, 4 ; Contador de dígitos
+
+    mov ah, 01h
+    int 21h
+    push ax ; Guardar número ingresado
+    lop leer_digito
+
+    mov ah, 09h
+    lea dx, res
+    int 21h
+
+    mov cx, 4 ; Contador de dígitos
+
+    pop ax ; Recuperar número ingresado
+    mov dl, al ; Obtener último dígito
+    mov ah, 02h
+    int 21h
+    loop mostrar_digito
+
+    mov ah, 4Ch
+    int 21h
+
+main endp
+end main
 </pre>
 
             </div>
@@ -720,9 +808,53 @@ MUL BX
             <div class="practice-code">
 
 <pre>
-MOV AX, 20
-MOV BL, 5
-DIV BL
+.model small
+.stack 100h
+.data
+
+arreglo db 1,2,3,4,5,6,7,8,9,10
+msg db 'La suma del arreglo es: $'
+
+.code
+main proc  
+
+    mov ax, @data
+    mov ds, ax
+
+    mov si, 0 ; Índice del arreglo
+    mov cx, 10 ; Tamaño del arreglo
+    mov al, 0 ; Acumulador para la suma
+
+    add al, [arreglo + si] ; Sumar elemento del arreglo
+    inc si ; Incrementar índice
+    loop sumar_elemento
+
+    mov ah, 0
+    mov bl, 10
+    div bl ; Dividir suma entre tamaño del arreglo para obtener promedio
+
+    mov bh, ah ; Guardar resultado en BH
+    mov bl, al
+
+    mov ah, 09h
+    lea dx, msg
+    int 21h
+
+    add bl, 30h ; Convertir resultado a ASCII
+    mov dl, bl
+    mov ah, 02h
+    int 21h
+
+    add bh, 30h ; Convertir resultado a ASCII
+    mov dl, bh
+    mov ah, 02h
+    int 21h
+
+    mov ah, 4Ch
+    int 21h
+
+main endp
+end main
 </pre>
 
             </div>
@@ -756,9 +888,67 @@ DIV BL
             <div class="practice-code">
 
 <pre>
-MOV AX, 5
-CMP AX, 5
-JE IGUAL
+.model small
+.stack 100h
+.data
+
+msg1 db 'Ingrese el primer número: $'
+msg2 db 13,10, 'Ingrese el segundo número: $'
+res db 13,10, 'El resultado es: $'
+
+.code
+main proc
+
+    mov ax, @data
+    mov ds, ax
+
+    mov ah, 09h
+    lea dx, msg1
+    int 21h
+
+    mov ah, 01h
+    int 21h
+    sub al, 30h ; Convertir de ASCII a número
+    mov bl, al ; Guardar primer número en BL
+
+    mov ah, 09h
+    lea dx, msg2
+    int 21h
+
+    mov ah, 01h
+    int 21h
+    sub al, 30h ; Convertir de ASCII a número
+    mov cl, al ; Guardar segundo número en CL
+
+    mov al, bl
+    mul cl ; Multiplicar BL por CL, resultado en AX
+
+    mov ah, 0
+    mov bl, 10
+    div bl ; Dividir resultado entre 10 para obtener dígitos
+
+    mov bh, ah ; Guardar dígito alto en BH
+    mov bl, al ; Guardar dígito bajo en BL
+
+    mov ah, 09h
+    lea dx, res
+    int 21h
+
+    add bl, 30h ; Convertir resultado a ASCII (parte baja)
+    mov dl, bl
+    mov ah, 02h
+    int 21h
+
+    add bh, 30h ; Convertir resultado a ASCII (parte alta)
+    mov dl, bh
+    mov ah, 02h
+    int 21h
+
+    mov ah, 4Ch
+    int 21h
+    
+main endp
+end main
 </pre>
 
             </div>
@@ -811,7 +1001,7 @@ JE IGUAL
 
             <div class="row align-items-center justify-content-center">
 
-                <div class="col-md-3 text-center mb-4">
+                <div class="col-md-3 text-center mb-4 mb-md-0">
 
                     <img src="../img/uni.png"
                         alt="Logo UNI"
